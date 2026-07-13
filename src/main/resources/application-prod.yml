@@ -1,0 +1,82 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      minimum-idle: ${DB_POOL_MIN_IDLE:5}
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:20}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT_MS:30000}
+      validation-timeout: ${DB_VALIDATION_TIMEOUT_MS:5000}
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        generate_statistics: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT:6379}
+      username: ${REDIS_USERNAME:}
+      password: ${REDIS_PASSWORD}
+      ssl:
+        enabled: ${REDIS_SSL_ENABLED:true}
+      timeout: ${REDIS_TIMEOUT:2s}
+
+  flyway:
+    enabled: true
+    clean-disabled: true
+    validate-on-migrate: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+  tomcat:
+    threads:
+      max: ${SERVER_MAX_THREADS:200}
+      min-spare: ${SERVER_MIN_SPARE_THREADS:10}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    root: INFO
+    com.shrawn: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+    org.hibernate.orm.jdbc.bind: OFF
+
+shrawn:
+  storage:
+    provider: s3
+    s3:
+      bucket-name: ${S3_BUCKET_NAME}
+      region: ${AWS_REGION}
+      receipt-prefix: ${S3_RECEIPT_PREFIX:receipts/}
+      report-prefix: ${S3_REPORT_PREFIX:reports/}
+
+  frontend:
+    allowed-origins:
+      - ${FRONTEND_URL}
+
+  security:
+    secure-cookies: true
+    resource-ownership-checks-enabled: true
+
+  external-services:
+    email-enabled: ${EMAIL_ENABLED:true}
+    object-storage-enabled: true

@@ -1,0 +1,50 @@
+spring:
+  main:
+    banner-mode: "off"
+
+  datasource:
+    hikari:
+      minimum-idle: 0
+      maximum-pool-size: 5
+      connection-timeout: 10000
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        generate_statistics: false
+
+  flyway:
+    enabled: true
+    clean-disabled: true
+    validate-on-migrate: true
+
+  cache:
+    type: none
+
+management:
+  endpoints:
+    enabled-by-default: false
+
+logging:
+  level:
+    root: WARN
+    com.shrawn: INFO
+    org.testcontainers: INFO
+
+shrawn:
+  storage:
+    provider: local
+    local:
+      root-directory: ${java.io.tmpdir}/shrawn-tests
+
+  security:
+    secure-cookies: false
+
+  external-services:
+    email-enabled: false
+    object-storage-enabled: false

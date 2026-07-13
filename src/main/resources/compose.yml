@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: shrawn-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-shrawn}
+      POSTGRES_USER: ${POSTGRES_USER:-shrawn}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-shrawn}
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - shrawn-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-shrawn} -d $${POSTGRES_DB:-shrawn}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shrawn-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: shrawn-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    environment:
+      TZ: UTC
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - shrawn-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shrawn-network
+
+volumes:
+  shrawn-postgres-data:
+  shrawn-redis-data:
+
+networks:
+  shrawn-network:
+    driver: bridge

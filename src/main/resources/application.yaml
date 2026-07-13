@@ -1,0 +1,134 @@
+spring:
+  application:
+    name: shrawn
+
+  profiles:
+    default: local
+
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: true
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+  datasource:
+    hikari:
+      pool-name: ShrawnHikariPool
+      auto-commit: false
+      connection-timeout: 30000
+      validation-timeout: 5000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          batch_size: 25
+        format_sql: false
+        order_inserts: true
+        order_updates: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+    clean-disabled: true
+    validate-on-migrate: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 12MB
+
+  data:
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 100
+        one-indexed-parameters: false
+
+server:
+  port: 8080
+  shutdown: graceful
+  forward-headers-strategy: framework
+
+  compression:
+    enabled: true
+    min-response-size: 2KB
+    mime-types:
+      - application/json
+      - application/xml
+      - text/html
+      - text/plain
+      - text/css
+      - application/javascript
+
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+    include-exception: false
+    whitelabel:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.expenseTracker.shrawn: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
+
+shrawn:
+  api:
+    base-path: /api/v1
+
+  pagination:
+    maximum-page-size: 100
+
+  upload:
+    maximum-receipt-size: 10MB
+    allowed-content-types:
+      - image/jpeg
+      - image/png
+      - application/pdf
+
+  security:
+    resource-ownership-checks-enabled: true
+    jwt:
+      issuer: shrawn-api
+      secret: ${JWT_SECRET:shrawn-local-dev-secret-key-for-hs512-must-be-longer-than-sixty-four-characters-2026}
+      access-token-expiration: 15m
+      refresh-token-expiration: 30d
