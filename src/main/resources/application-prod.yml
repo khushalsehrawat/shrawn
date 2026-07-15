@@ -30,6 +30,9 @@ spring:
     enabled: true
     clean-disabled: true
     validate-on-migrate: true
+    url: ${DB_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
 server:
   port: ${SERVER_PORT:8080}
