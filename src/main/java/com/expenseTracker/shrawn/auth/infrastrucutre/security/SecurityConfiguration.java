@@ -78,7 +78,8 @@ public class SecurityConfiguration {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "192.168.1.9:5173",
-                "https://shrawn.onrender.com"
+                "https://shrawn.onrender.com",
+                "https://shrawn-five.vercel.app/"
         ));
 
         configuration.setAllowedMethods(List.of(
