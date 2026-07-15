@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://shrawn_user:qWSDQ3czUInJ4Yx7ObEnFQivPYRJ9Jyj@dpg-d9ac04u7r5hc73cfps3g-a/shrawn}
-    username: ${DB_USERNAME:shrawn_user}
-    password: ${DB_PASSWORD:qWSDQ3czUInJ4Yx7ObEnFQivPYRJ9Jyj}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn}
+    username: ${DB_USERNAME:shrawn}
+    password: ${DB_PASSWORD:shrawn}
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: 2
@@ -11,9 +11,9 @@ spring:
 
   flyway:
     enabled: true
-    url: ${DB_URL:jdbc:postgresql://shrawn_user:qWSDQ3czUInJ4Yx7ObEnFQivPYRJ9Jyj@dpg-d9ac04u7r5hc73cfps3g-a/shrawn}
-    user: ${DB_USERNAME:shrawn_user}
-    password: ${DB_PASSWORD:qWSDQ3czUInJ4Yx7ObEnFQivPYRJ9Jyj}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn}
+    user: ${DB_USERNAME:shrawn}
+    password: ${DB_PASSWORD:shrawn}
 
   jpa:
     show-sql: false
