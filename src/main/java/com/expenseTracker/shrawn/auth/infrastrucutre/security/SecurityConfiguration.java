@@ -82,7 +82,7 @@ public class SecurityConfiguration {
                 "https://shrawn-five.vercel.app/",
                 "ionic://localhost",
                 "https://localhost",
-                "capacitor://localhost",
+                "capacitor://localhost"
 
         ));
 
