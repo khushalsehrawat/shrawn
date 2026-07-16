@@ -79,7 +79,9 @@ public class SecurityConfiguration {
                 "http://localhost:5173",
                 "192.168.1.9:5173",
                 "https://shrawn.onrender.com",
-                "https://shrawn-five.vercel.app/"
+                "https://shrawn-five.vercel.app/",
+                "ionic://localhost",
+                "http://localhost"
         ));
 
         configuration.setAllowedMethods(List.of(
