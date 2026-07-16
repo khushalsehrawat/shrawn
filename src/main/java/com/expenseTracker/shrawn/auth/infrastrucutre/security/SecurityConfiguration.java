@@ -81,7 +81,9 @@ public class SecurityConfiguration {
                 "https://shrawn.onrender.com",
                 "https://shrawn-five.vercel.app/",
                 "ionic://localhost",
-                "http://localhost"
+                "http://localhost",
+                "capacitor://localhost",
+
         ));
 
         configuration.setAllowedMethods(List.of(
