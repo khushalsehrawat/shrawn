@@ -4,9 +4,9 @@ services:
     container_name: shrawn-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-shrawn}
+      POSTGRES_DB: ${POSTGRES_DB:-shrawn_jxr9}
       POSTGRES_USER: ${POSTGRES_USER:-shrawn}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-shrawn}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-IQ6utiY1rtTHwBSGg4ojCJQyer94c96A}
       TZ: UTC
       PGTZ: UTC
     ports:
