@@ -2,7 +2,7 @@ spring:
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn_jxr9}
     username: ${DB_USERNAME:shrawn}
-    password: ${DB_PASSWORD:shrawn}
+    password: ${DB_PASSWORD:IQ6utiY1rtTHwBSGg4ojCJQyer94c96A}
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: 2
@@ -13,7 +13,7 @@ spring:
     enabled: true
     url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn_jxr9}
     user: ${DB_USERNAME:shrawn}
-    password: ${DB_PASSWORD:shrawn}
+    password: ${DB_PASSWORD:IQ6utiY1rtTHwBSGg4ojCJQyer94c96A}
 
   jpa:
     show-sql: false
