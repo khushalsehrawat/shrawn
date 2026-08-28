@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn_jxr9}
     username: ${DB_USERNAME:shrawn}
     password: ${DB_PASSWORD:shrawn}
     driver-class-name: org.postgresql.Driver
@@ -11,7 +11,7 @@ spring:
 
   flyway:
     enabled: true
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shrawn_jxr9}
     user: ${DB_USERNAME:shrawn}
     password: ${DB_PASSWORD:shrawn}
 
